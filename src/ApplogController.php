@@ -12,7 +12,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 class ApplogController extends BaseController
 {
-    public function __invoke()
+    public function index()
     {
         if (request()->input('dl')) {
 
