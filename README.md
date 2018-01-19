@@ -28,7 +28,7 @@ composer require sarfraznawaz2005/applog
 Now add a route in your web routes file:
 
 ```php
-Route::get('applog', '\Sarfraznawaz2005\Applog\ApplogController');
+Route::get('applog', '\Sarfraznawaz2005\Applog\ApplogController@index');
 ```
 
 This way logs will be available at `http://yourapp/applog` or whatever route you set for it.
