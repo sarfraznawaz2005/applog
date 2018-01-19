@@ -20,7 +20,7 @@
   ],
   "require": {
     "illuminate/support": "~5.1",
-    "php": "~5.6|~7.0"
+    "php": "~5.6"
   },
   "autoload": {
     "psr-4": {
@@ -33,6 +33,5 @@
         "Sarfraznawaz2005\\Applog\\ApplogServiceProvider"
       ]
     }
-  },
-  "minimum-stability": "stable"
+  }
 }
