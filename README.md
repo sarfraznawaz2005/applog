@@ -1,16 +1,13 @@
 # Laravel AppLog
 
-[![Laravel 5.1](https://img.shields.io/badge/Laravel-5.1-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.2](https://img.shields.io/badge/Laravel-5.2-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.3](https://img.shields.io/badge/Laravel-5.3-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.4](https://img.shields.io/badge/Laravel-5.4-brightgreen.svg?style=flat-square)](http://laravel.com)
-[![Total Downloads](https://poser.pugx.org/sarfraznawaz2005/visitlog/downloads)](https://packagist.org/packages/sarfraznawaz2005/visitlog)
+[![Total Downloads](https://poser.pugx.org/sarfraznawaz2005/applog/downloads)](https://packagist.org/packages/sarfraznawaz2005/applog)
 
-Laravel AppLog is a package to view application logs. It is based on [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) but differs with following points:
+Laravel AppLog is a package to view application logs. It is based on [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) but differs in following points:
 
 - No multiple log files, we only look for `laravel.log` file.
 - Updated styling and icons
 - Ability to filter records by error type/level, date and context
+- Auto-discovery feature for Laravel 5.5
 
 ## Screenshot ##
 
@@ -28,19 +25,26 @@ Install via composer
 composer require sarfraznawaz2005/applog
 ```
 
+Now add a route in your web routes file:
+
+```php
+Route::get('applog', '\Sarfraznawaz2005\Applog\ApplogController');
+```
+
+This way logs will be available at `http://yourapp/applog` or whatever route you set for it.
+
+**Laravel 5.5**
+
+You are done.
+
+**Laravel 5.4 or less**
+
 Add Service Provider to `config/app.php` in `providers` section
 ```php
-Sarfraznawaz2005\VisitLog\VisitLogServiceProvider::class,
+Sarfraznawaz2005\Applog\ApplogServiceProvider::class,
 ```
 
-Add Facade to `config/app.php` in `aliases` section
-```php
-'VisitLog' => Sarfraznawaz2005\VisitLog\Facades\VisitLog::class,
-```
-
-Run `php artisan vendor:publish` to publish package's config and migration file. You should now have `visitlog.php` file published in `app/config` folder. It will also publish migration file in `database/migrations` folder.
-
-Run `php artisan migrate` to create `visitlogs` table in your database.
+Optionally run `php artisan vendor:publish` to publish package's view file if you wish to customize look and feel of it.
 
 ## License ##
 
