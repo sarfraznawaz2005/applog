@@ -1,0 +1,38 @@
+{
+  "name": "sarfraznawaz2005/applog",
+  "type": "library",
+  "description": "Laravel package to view application logs inside browser.",
+  "keywords": [
+    "laravel",
+    "logs",
+    "log",
+    "applogs",
+    "errors"
+  ],
+  "homepage": "https://github.com/sarfraznawaz2005/applog",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sarfraz Ahmed",
+      "email": "sarfraznawaz2005@gmail.com",
+      "homepage": "http://codeinphp.github.com"
+    }
+  ],
+  "require": {
+    "illuminate/support": "~5.1",
+    "php": "~5.6|~7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sarfraznawaz2005\\Applog\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sarfraznawaz2005\\Applog\\ApplogServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable"
+}
