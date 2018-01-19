@@ -173,7 +173,7 @@
         var dates = [];
 
         $("#table-log tfoot th:not(:last)").each(function (i) {
-            var select = $('<select><option value=""></option></select>')
+            var select = $('<select style="width: 100%;"><option value=""></option></select>')
                 .appendTo($(this).empty())
                 .on('change', function () {
                     table.column(i)
