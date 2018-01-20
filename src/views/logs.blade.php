@@ -14,7 +14,6 @@
     <style>
         body {
             padding: 10px;
-            font-family: 'Dosis', 'Tahoma', sans-serif !important;
         }
 
         h1 {
@@ -51,7 +50,7 @@
         }
 
         thead tr {
-            background-image: radial-gradient(#eee, #bbbbbb);
+            background-image: radial-gradient(#fff, #eee);
         }
     </style>
 </head>
@@ -65,12 +64,11 @@
                     Log file >50M, please download it.
                 </div>
             @else
-                <table id="table-log" class="table table-condensed table-striped table-bordered table-hover">
+                <table id="table-log" class="table table-condensed table-striped table-hover">
                     <thead>
                     <tr>
                         <th>Type</th>
                         <th>Date</th>
-                        <th>Context</th>
                         <th>Message</th>
                     </tr>
                     </thead>
@@ -79,7 +77,6 @@
                     <tr>
                         <th>Type</th>
                         <th>Date</th>
-                        <th>Context</th>
                         <th>&nbsp;</th>
                     </tr>
                     </tfoot>
@@ -98,9 +95,6 @@
 
                             <td class="date" data-value="{{$log['date']}}">
                                 {{{$log['date']}}}
-                            </td>
-                            <td class="context" data-value="{{ucfirst($log['context'])}}">
-                                {{ucfirst($log['context'])}}
                             </td>
 
                             <td class="text">
@@ -169,6 +163,7 @@
             }
         });
 
+        ///////////////////////////////////////////////////////////////
         // filter columns
         var dates = [];
 
@@ -198,14 +193,25 @@
                     }
 
                     dates.push(val);
+
+                    // we will populate date column later with dates in descending order
+                    return true;
                 }
 
                 select.append('<option value="' + val + '">' + val + '</option>')
             });
         });
 
+        // populate dates select box
+        $(dates).sort(function (a, b) {
+            return a > b ? -1 : a < b ? 1 : 0;
+        }).each(function (i, v) {
+            $('tfoot select:eq(1)').append('<option value="' + v + '">' + v + '</option>')
+        });
+
         // put filters on header
         $('tfoot').css('display', 'table-header-group');
+        ///////////////////////////////////////////////////////////////
 
         $('#delete-log, #delete-all-log').click(function () {
             return confirm('Are you sure?');
