@@ -64,7 +64,7 @@
                     Log file >50M, please download it.
                 </div>
             @else
-                <table id="table-log" class="table table-condensed table-striped table-hover">
+                <table id="table-log" class="table table-condensed table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>Type</th>
